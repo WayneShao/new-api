@@ -143,10 +143,6 @@ func TextHelper(c *gin.Context) (openaiErr *dto.OpenAIErrorWithStatusCode) {
 		includeUsage = true
 	}
 
-	if constant.ForceCloseStream {
-		textRequest.Stream = false
-	}
-
 	// 如果不支持StreamOptions，将StreamOptions设置为nil
 	if !relayInfo.SupportStreamOptions || !textRequest.Stream {
 		textRequest.StreamOptions = nil

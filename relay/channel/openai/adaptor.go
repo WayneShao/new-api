@@ -114,6 +114,8 @@ func (a *Adaptor) ConvertRequest(c *gin.Context, info *relaycommon.RelayInfo, re
 			request.MaxCompletionTokens = request.MaxTokens
 			request.MaxTokens = 0
 		}
+		request.Stream = false
+		info.IsStream = false
 	}
 	return request, nil
 }
