@@ -114,6 +114,10 @@ func (a *Adaptor) ConvertRequest(c *gin.Context, info *relaycommon.RelayInfo, re
 			request.MaxCompletionTokens = request.MaxTokens
 			request.MaxTokens = 0
 		}
+		request.Stream = false
+		request.StreamOptions = nil
+		info.IsStream = false
+		info.SupportStreamOptions = false
 	}
 	if request.Model == "o1" || request.Model == "o1-2024-12-17" {
 		//修改第一个Message的内容，将system改为developer
